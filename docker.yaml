@@ -1,0 +1,67 @@
+- name: docker and ansible project
+  hosts: host_server
+  become: yes
+  tasks:
+    - name: install python 3
+      vars:
+        ansible_python_interpreter: /usr/bin/python
+      apt:
+        pkg:
+           - python3
+           - python-pip
+           - python3-pip
+        update_cache: yes
+        state: present
+
+    - name: Add Docker GPG apt Key
+      apt_key:
+       url: https://download.docker.com/linux/ubuntu/gpg
+       state: present
+    - name: Add Docker Repository
+      apt_repository:
+       repo: deb https://download.docker.com/linux/ubuntu bionic stable
+       state: present
+    - name: Update apt and install docker-ce
+      apt: update_cache=yes name=docker-ce state=latest
+
+
+
+
+    - name: install docker-compose
+      get_url:
+          url: https://github.com/docker/compose/releases/download/1.25.1-rc1/docker-compose-Linux-x86_64
+          dest: /usr/local/bin/docker-compose
+          mode: +x
+
+- name: run docker
+  hosts: host_server
+  become: yes
+
+  tasks :
+    - name: install docker pip
+      pip:
+        name: docker
+    - name:  start docker
+      systemd:
+            name: docker
+            state: started
+    - name:  ensure docker group exists
+      group:
+        name: docker
+        state: present
+    - name: create a docker user
+      user:
+        name: mo2
+        group: docker
+        append: yes
+    - name: reconect to the session
+      meta: reset_connection
+    - name: pull docker image
+      docker_image:
+        name: redis
+        source: pull
+    - name: start the redis image
+      docker_container:
+           name: redis
+           image: redis
+           state: started
