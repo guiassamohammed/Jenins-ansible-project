@@ -1,5 +1,5 @@
 pipeline{
-   agent any{
+   agent any
    stages{
       stage('copy files to ansible'){
          steps{
@@ -18,8 +18,6 @@ pipeline{
 
       } 
       
-   }
-
    }
 
 }
