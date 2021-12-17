@@ -6,7 +6,7 @@ pipeline{
             script{
                 echo"copy all the files to the ansible machine"
                 sshagent(['ansible-server']) {
-                   sh "scp -rp -v -o StrictHostKeyChecking=no /home/Mohammed/jenkins/* Mohammed@10.0.0.9" 
+                   sh "scp -rp -v -o StrictHostKeyChecking=no /home/Mohammed/jenkins/* Mohammed@10.0.0.9:~/" 
                    withCredentials([ sshUserPrivateKey(credentialsId: 'test', keyFileVariable: 'keyfile', usernameVariable: 'user')])
                    sh "scp ${keyfile} Mohammed@10.0.0.9:~/ssh-key.pem"
                     
