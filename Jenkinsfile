@@ -6,9 +6,9 @@ pipeline{
             script{
                 echo"copy all the files to the ansible machine"
                 sshagent(['ansible-server']) {
-                   sh "scp -o StrictHostKeyChecking=no /home/Mohammed/jenkins/* root@10.0.0.9:/root" 
+                   sh "scp -o StrictHostKeyChecking=no /home/Mohammed/jenkins/* Mohammed@10.0.0.9:/mo" 
                   
-                    
+   
                 }
                   
             }   
