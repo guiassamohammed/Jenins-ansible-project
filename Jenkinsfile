@@ -8,8 +8,7 @@ pipeline{
                 sshagent(['ansible-server']) {
                    sh "whoami"
                    sh "scp -o StrictHostKeyChecking=no  /home/Mohammed/jenkins/* Mohammed@10.0.0.9:/home/Mohammed" 
-                   withCredentials([ sshUserPrivateKey(credentialsId: 'test', keyFileVariable: 'keyfile', usernameVariable: 'user')])
-                      sh "scp ${keyfile} root@10.0.0.9:~/ssh-key.pem"
+                   
    
                 }
                   
