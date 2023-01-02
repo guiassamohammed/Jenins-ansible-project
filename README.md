@@ -19,7 +19,8 @@ Before running the config file you need to test if the servers are accessible fr
  * Ansible all -i hosts -m ping 
 
 
-The YAML file (docker.yaml): 
+**The YAML file (docker.yaml): 
+**
 
 The file has 2 plays: 
 
