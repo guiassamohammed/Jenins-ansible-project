@@ -19,8 +19,7 @@ Before running the config file you need to test if the servers are accessible fr
  * Ansible all -i hosts -m ping 
 
 
-**The YAML file (docker.yaml): 
-**
+**The YAML file (docker.yaml):**
 
 The file has 2 plays: 
 
@@ -33,6 +32,6 @@ To run the play book you need to run the following command:
 * Ansible-playbook  -I hosts [file_name.yaml] 
 
 
-**Reference**: 
+**Reference:** 
 
 https://docs.ansible.com/ansible/latest/collections/community/docker/docsite/scenario_guide.html![image](https://user-images.githubusercontent.com/11373339/210270679-3b2d1a2d-317a-4214-b13d-990ae96b7039.png)
