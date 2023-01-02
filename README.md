@@ -14,7 +14,7 @@ Ansible also gives you the flexibility to create a custom inventory file at your
 
 **Testing the default inventory:**
 
-Before running the config file you need to test if the servers are accessible from your remote machine, you can perform this test using the following command 
+Before running the config file you need to test if the servers are accessible from your remote machine, you can perform this test using the following command:
 
  * Ansible all -i hosts -m ping 
 
